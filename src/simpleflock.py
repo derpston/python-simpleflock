@@ -1,3 +1,4 @@
+from __future__ import print_function
 import time
 import os
 import fcntl
@@ -19,7 +20,7 @@ class SimpleFlock:
             fcntl.flock(self._fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
             # Lock acquired!
             return
-         except IOError, ex:
+         except (OSError, IOError) as ex:
             if ex.errno != errno.EAGAIN: # Resource temporarily unavailable
                raise
             elif self._timeout is not None and time.time() > (start_lock_search + self._timeout):
@@ -44,11 +45,11 @@ class SimpleFlock:
          pass
 
 if __name__ == "__main__":
-   print "Acquiring lock..."
+   print("Acquiring lock...")
    with SimpleFlock("locktest", 2):
-      print "Lock acquired."
+      print("Lock acquired.")
       time.sleep(3)
-   print "Lock released."
+   print("Lock released.")
 
 
 
