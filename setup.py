@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
       name = 'simpleflock'
-   ,  version = '0.0.1'
+   ,  version = '0.0.3'
    ,  description = 'Simple flock-based file locking, using the `with` syntax'
    ,  author = 'Derp Ston'
    ,  author_email = 'derpston+pypi@sleepygeek.org'
